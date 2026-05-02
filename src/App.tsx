@@ -142,9 +142,9 @@ const Navbar = ({ onOpenDemo, onOpenToast }: { onOpenDemo: () => void, onOpenToa
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? "py-4" : "py-10"}`}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className={`glass-header rounded-full px-8 py-3.5 flex items-center justify-between transition-all duration-500 ${isScrolled ? "px-10 shadow-2xl border-white/10" : ""}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? "py-4" : "py-6 md:py-10"}`}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className={`glass-header rounded-full px-5 py-2.5 md:px-8 md:py-3.5 flex items-center justify-between transition-all duration-500 ${isScrolled ? "md:px-10 shadow-2xl border-white/10" : ""}`}>
           <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="w-10 h-10 bg-gold rounded-xl gold-glow-hover flex items-center justify-center font-bold text-charcoal text-2xl shadow-lg transform group-hover:rotate-12 transition-all">A</div>
             <span className="font-display font-black text-2xl tracking-tighter uppercase hidden sm:block">AURA <span className="text-gold">AI</span></span>
@@ -219,132 +219,118 @@ const Navbar = ({ onOpenDemo, onOpenToast }: { onOpenDemo: () => void, onOpenToa
 
 const Hero = ({ onOpenDemo, onOpenToast }: { onOpenDemo: () => void, onOpenToast: (msg: string) => void }) => {
   return (
-    <section className="relative pt-56 pb-32 md:pt-72 md:pb-52 overflow-hidden bg-charcoal">
+    <section className="relative pt-40 pb-20 md:pt-72 md:pb-52 overflow-hidden bg-charcoal font-display">
       <div className="hero-glow top-[10%] left-[5%]" />
       <div className="hero-glow bottom-[10%] right-[5%]" />
       
-      <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-10"
+          className="space-y-8 md:space-y-10 text-center lg:text-left"
         >
-          <div className="inline-flex items-center gap-3 px-5 py-2 glass-card rounded-full text-[11px] uppercase tracking-[0.25em] font-black text-gold">
-            <span className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse shadow-[0_0_15px_rgba(212,175,55,1)]"></span>
+          <div className="inline-flex items-center gap-3 px-4 py-2 glass-card rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-black text-gold">
+            <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-gold animate-pulse shadow-[0_0_15px_rgba(212,175,55,1)]"></span>
             NEURAL ENGINE ACTIVATED
           </div>
           
-          <h1 className="font-display text-7xl md:text-9xl font-black leading-[0.9] tracking-[-0.04em] uppercase">
-            Future-Proof <br />
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-black leading-[0.95] md:leading-[0.9] tracking-[-0.04em] uppercase">
+            Future-Proof <br className="hidden md:block" />
             Your <span className="text-outline-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]">Market share.</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/40 max-w-lg leading-[1.6] font-medium tracking-tight">
+          <p className="text-lg md:text-2xl text-white/40 max-w-lg mx-auto lg:mx-0 leading-[1.6] font-medium tracking-tight">
             Our autonomous intelligence layer predicts hyper-trends before they manifest in reality. Scaling at 99.8% accuracy.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 lg:pt-6 w-full sm:w-auto">
             <button 
               onClick={() => onOpenToast("Analyzing market clusters... Dashboard initialization in progress.")}
-              className="px-12 py-5.5 bg-gold text-charcoal font-black rounded-full gold-button-shadow hover:scale-105 active:scale-95 transition-all cursor-pointer text-sm uppercase tracking-[0.1em]"
+              className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5.5 bg-gold text-charcoal font-black rounded-full gold-button-shadow hover:scale-105 active:scale-95 transition-all cursor-pointer text-xs md:text-sm uppercase tracking-[0.1em]"
             >
               Start Scaling Now
             </button>
             <button 
               onClick={onOpenDemo}
-              className="px-12 py-5.5 bg-white/5 border border-white/10 text-white font-black rounded-full hover:bg-white/10 transition-all cursor-pointer text-sm uppercase tracking-[0.1em] backdrop-blur-md"
+              className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5.5 bg-white/5 border border-white/10 text-white font-black rounded-full hover:bg-white/10 transition-all cursor-pointer text-xs md:text-sm uppercase tracking-[0.1em] backdrop-blur-md"
             >
               Watch Intelligence
             </button>
           </div>
 
-          <div className="flex items-center gap-8 pt-10 border-t border-white/5">
-            <div className="flex -space-x-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 md:gap-8 pt-8 md:pt-10 border-t border-white/5">
+            <div className="flex -space-x-3 md:-space-x-4">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-charcoal bg-charcoal-muted overflow-hidden flex items-center justify-center">
+                <div key={i} className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 md:border-4 border-charcoal bg-charcoal-muted overflow-hidden">
                    <div className="w-full h-full bg-gradient-to-br from-gold/40 to-transparent" />
                 </div>
               ))}
-              <div className="w-12 h-12 rounded-full border-4 border-charcoal bg-gold/10 flex items-center justify-center text-[10px] font-bold text-gold">+2k</div>
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 md:border-4 border-charcoal bg-gold/10 flex items-center justify-center text-[10px] font-bold text-gold">+2k</div>
             </div>
-            <p className="text-sm text-white/30 font-medium leading-tight">
-              Powering <span className="text-white">2,400+</span> elite <br /> enterprise marketing stacks.
+            <p className="text-xs md:text-sm text-white/30 font-medium leading-tight">
+              Powering <span className="text-white">2,400+</span> elite <br className="hidden md:block" /> enterprise marketing stacks.
             </p>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50, scale: 0.9 }}
-          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative group pr-4"
+          className="relative group lg:pr-4 order-first lg:order-last"
         >
-          <div className="w-full aspect-square glass-card rounded-[60px] p-1.5 shadow-[0_80px_160px_rgba(0,0,0,0.6)] relative overflow-hidden flex items-center justify-center">
+          <div className="w-full aspect-square glass-card rounded-[40px] md:rounded-[60px] p-1 shadow-[0_40px_100px_rgba(0,0,0,0.6)] md:shadow-[0_80px_160px_rgba(0,0,0,0.6)] relative overflow-hidden flex items-center justify-center">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.1),transparent_70%)] opacity-50 group-hover:opacity-100 transition-opacity duration-1000" />
             
-            <div className="relative w-full h-full glass-card border-none rounded-[58px] p-10 flex flex-col items-center justify-center">
+            <div className="relative w-full h-full glass-card border-none rounded-[38px] md:rounded-[58px] p-6 md:p-10 flex flex-col items-center justify-center">
                {/* 3D Neural Center */}
-               <div className="relative w-64 h-64 flex items-center justify-center">
+               <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
                   <motion.div 
                     animate={{ rotate: 360 }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 border-[3px] border-dashed border-gold/20 rounded-full" 
+                    className="absolute inset-0 border-2 md:border-[3px] border-dashed border-gold/20 rounded-full" 
                   />
                   <motion.div 
                     animate={{ rotate: -360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-6 border border-gold/30 rounded-full" 
+                    className="absolute inset-4 md:inset-6 border border-gold/30 rounded-full" 
                   />
-                  <div className="absolute inset-16 bg-gold/5 blur-3xl animate-pulse" />
+                  <div className="absolute inset-10 md:inset-16 bg-gold/5 blur-3xl animate-pulse" />
                   
                   <motion.div 
                     whileHover={{ scale: 1.1 }}
-                    className="relative w-32 h-32 bg-gold rounded-[40px] gold-glow flex items-center justify-center shadow-[0_20px_60px_rgba(212,175,55,0.5)] transform rotate-12 transition-all cursor-crosshair group/chip"
+                    className="relative w-24 h-24 md:w-32 md:h-32 bg-gold rounded-[30px] md:rounded-[40px] gold-glow flex items-center justify-center shadow-[0_20px_60px_rgba(212,175,55,0.5)] transform rotate-12 transition-all cursor-crosshair group/chip"
                   >
-                     <Cpu size={48} className="text-charcoal -rotate-12 group-hover/chip:animate-pulse" />
+                     <Cpu size={36} className="text-charcoal md:size-12 -rotate-12 group-hover/chip:animate-pulse" />
                   </motion.div>
-
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, delay: i * 0.7 }}
-                      className="absolute w-4 h-4 bg-gold rounded-full gold-glow"
-                      style={{ 
-                        top: `${Math.random() * 80 + i}%`, 
-                        left: `${Math.random() * 80 + i}%` 
-                      }}
-                    />
-                  ))}
                </div>
 
                {/* Stats Panel */}
                <motion.div 
-                initial={{ y: 30, opacity: 0 }}
+                initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="absolute bottom-10 left-10 p-7 glass-card border-gold/20 w-64 shadow-2xl flex flex-col gap-4"
+                className="absolute bottom-6 md:bottom-10 left-6 md:left-10 p-5 md:p-7 glass-card border-gold/20 w-48 md:w-64 shadow-2xl flex flex-col gap-3 md:gap-4"
                >
                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Growth Velocity</span>
-                    <Activity size={14} className="text-gold animate-pulse" />
+                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Growth Velocity</span>
+                    <Activity size={12} className="text-gold animate-pulse md:size-14" />
                  </div>
-                 <div className="flex items-end gap-3">
-                    <span className="text-4xl font-black font-display">+142.8%</span>
-                    <div className="flex items-center gap-1 text-[10px] font-bold text-green-500 pb-1.5">
-                       <TrendingUp size={12} />
+                 <div className="flex items-end gap-2 md:gap-3">
+                    <span className="text-2xl md:text-4xl font-black font-display">+142.8%</span>
+                    <div className="flex items-center gap-1 text-[8px] md:text-[10px] font-bold text-green-500 pb-1 md:pb-1.5">
+                       <TrendingUp size={10} className="md:size-12" />
                        <span>LIVE</span>
                     </div>
                  </div>
-                 <div className="w-full h-10 flex items-end gap-1 px-1">
+                 <div className="w-full h-8 md:h-10 flex items-end gap-1 px-1">
                     {[3, 7, 5, 9, 6, 10, 8, 12, 11, 14].map((h, i) => (
                       <motion.div 
                         key={i}
-                        animate={{ height: [`${h*4}px`, `${(h+Math.random()*4)*4}px`, `${h*4}px`] }}
+                        animate={{ height: [`${h*3}px`, `${(h+Math.random()*4)*3.5}px`, `${h*3}px`] }}
                         transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
                         className="flex-1 bg-gold/30 rounded-t-sm"
                       />
@@ -381,41 +367,41 @@ const SocialMarquee = () => {
 const TheNeuralStack = () => {
   const features = [
     {
-      icon: <Layers className="size-8" />,
+      icon: <Layers className="size-6 md:size-8" />,
       title: "Cluster Analysis",
       desc: "Aggregates billions of data points into behavioral clusters using unsupervised learning."
     },
     {
-      icon: <Cpu className="size-8" />,
+      icon: <Cpu className="size-6 md:size-8" />,
       title: "Predictive Nodes",
       desc: "Distributed server-less execution nodes that process market signals at the edge."
     },
     {
-      icon: <Globe className="size-8" />,
+      icon: <Globe className="size-6 md:size-8" />,
       title: "Universal Sync",
       desc: "Instant synchronization of insights across 140+ countries and global stock exchanges."
     },
     {
-      icon: <TrendingUp className="size-8" />,
+      icon: <TrendingUp className="size-6 md:size-8" />,
       title: "Revenue Multiplier",
       desc: "Automated attribution modeling that identifies and exploits high-velocity sales growth."
     }
   ];
 
   return (
-    <section id="technology" className="py-40 relative">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-28">
-           <div className="space-y-6">
-              <span className="text-gold text-[12px] font-black uppercase tracking-[0.4em]">Proprietary Technology</span>
-              <h2 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-[0.9]">The Neural <br /> <span className="text-outline-gold">Stack.</span></h2>
+    <section id="technology" className="py-24 md:py-40 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 md:mb-28">
+           <div className="space-y-4 md:space-y-6 text-center lg:text-left">
+              <span className="text-gold text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">Proprietary Technology</span>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black tracking-tighter uppercase leading-[1.1] md:leading-[0.9]">The Neural <br className="hidden md:block" /> <span className="text-outline-gold">Stack.</span></h2>
            </div>
-           <p className="text-xl md:text-2xl text-white/30 max-w-lg leading-relaxed font-medium">
+           <p className="text-lg md:text-2xl text-white/30 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium text-center lg:text-left">
              Engineered for aggressive market dominance, our tech enables enterprise leaders to move with absolute certainty.
            </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {features.map((feat, i) => (
             <motion.div
               key={feat.title}
@@ -423,16 +409,16 @@ const TheNeuralStack = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="premium-card p-10 group cursor-pointer"
+              className="premium-card p-8 md:p-10 group cursor-pointer"
             >
-              <div className="w-16 h-16 bg-gold/5 rounded-2xl flex items-center justify-center text-gold mb-10 group-hover:bg-gold group-hover:text-charcoal transition-all duration-500 shadow-xl border border-gold/10">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-gold/5 rounded-2xl flex items-center justify-center text-gold mb-6 md:mb-10 group-hover:bg-gold group-hover:text-charcoal transition-all duration-500 shadow-xl border border-gold/10">
                 {feat.icon}
               </div>
-              <h3 className="text-2xl font-display font-black uppercase tracking-tight mb-4 group-hover:text-gold transition-colors">{feat.title}</h3>
+              <h3 className="text-xl md:text-2xl font-display font-black uppercase tracking-tight mb-3 md:mb-4 group-hover:text-gold transition-colors">{feat.title}</h3>
               <p className="text-white/40 text-sm leading-relaxed font-medium">
                 {feat.desc}
               </p>
-              <div className="mt-8 pt-8 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-white/5 opacity-40 group-hover:opacity-100 transition-opacity">
                  <div className="flex items-center gap-2 text-gold text-[10px] font-bold uppercase tracking-widest">
                     <span>Explore Layer</span>
                     <ArrowRight size={12} />
@@ -463,55 +449,55 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-40 bg-charcoal-muted/30">
-      <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-24 items-center">
-        <div className="space-y-16">
+    <section id="features" className="py-24 md:py-40 bg-charcoal-muted/30">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
+        <div className="space-y-12 md:space-y-16 text-center lg:text-left">
           {highlights.map((h, i) => (
             <motion.div 
               key={h.title}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex gap-10 items-start"
+              className="flex flex-col sm:flex-row gap-6 md:gap-10 items-center lg:items-start"
             >
-              <div className="text-6xl md:text-8xl font-display font-black text-gold tracking-tighter w-48 shrink-0">{h.value}</div>
-              <div className="space-y-4">
+              <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black text-gold tracking-tighter sm:w-48 shrink-0">{h.value}</div>
+              <div className="space-y-3 md:space-y-4">
                  <div className="flex flex-col">
-                    <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/30 mb-2">{h.metric}</span>
-                    <h3 className="text-3xl font-display font-bold">{h.title}</h3>
+                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-white/30 mb-1 md:mb-2">{h.metric}</span>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold">{h.title}</h3>
                  </div>
-                 <p className="text-white/40 text-lg leading-relaxed max-w-sm">{h.desc}</p>
+                 <p className="text-white/40 text-base md:text-lg leading-relaxed max-w-sm mx-auto lg:mx-0">{h.desc}</p>
               </div>
             </motion.div>
           ))}
-          <div className="pt-10">
-             <button className="flex items-center gap-4 text-gold font-bold uppercase tracking-[0.2em] text-sm group">
+          <div className="pt-6 md:pt-10 flex justify-center lg:justify-start">
+             <button className="flex items-center gap-4 text-gold font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs group">
                 <span className="border-b-2 border-gold pb-1">View Full Capabilities</span>
-                <ChevronRight className="group-hover:translate-x-2 transition-transform" />
+                <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
              </button>
           </div>
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative glass-card rounded-[60px] p-12 aspect-[4/5] md:aspect-square flex items-center justify-center overflow-hidden"
+          className="relative glass-card rounded-[40px] md:rounded-[60px] p-8 md:p-12 aspect-[4/5] sm:aspect-square flex items-center justify-center overflow-hidden w-full max-w-2xl mx-auto"
         >
-           <div className="absolute top-0 right-0 w-80 h-80 bg-gold/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
+           <div className="absolute top-0 right-0 w-64 md:w-80 h-64 md:h-80 bg-gold/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
            <div className="relative w-full h-full flex flex-col justify-between">
               <div className="flex justify-between items-start">
                  <div className="space-y-1">
-                    <h4 className="text-2xl font-bold font-display uppercase tracking-tight">Active Nodes</h4>
-                    <p className="text-white/30 text-sm font-medium">Neural distribution matrix</p>
+                    <h4 className="text-xl md:text-2xl font-bold font-display uppercase tracking-tight">Active Nodes</h4>
+                    <p className="text-white/30 text-xs md:text-sm font-medium">Neural distribution matrix</p>
                  </div>
-                 <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
-                    <Activity className="text-gold" />
+                 <div className="w-10 h-10 md:w-14 md:h-14 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center border border-white/10">
+                    <Activity size={18} className="text-gold md:size-14" />
                  </div>
               </div>
               
-              <div className="flex-1 flex items-center justify-center py-10">
-                 <div className="grid grid-cols-6 gap-3 w-full">
+              <div className="flex-1 flex items-center justify-center py-6 md:py-10">
+                 <div className="grid grid-cols-6 gap-2 md:gap-3 w-full max-w-[280px] md:max-w-none">
                     {[...Array(24)].map((_, i) => (
                       <motion.div
                         key={i}
@@ -523,9 +509,9 @@ const Features = () => {
                  </div>
               </div>
 
-              <div className="p-8 glass-card border-none bg-gold/5 space-y-4">
-                 <p className="text-[10px] font-black uppercase text-gold tracking-widest">Synthetic Intelligence</p>
-                 <p className="text-white/60 text-sm leading-relaxed italic">"Predictive clustering suggests 14% increase in Q3 consumer demand for tech commodities."</p>
+              <div className="p-5 md:p-8 glass-card border-none bg-gold/5 space-y-3 md:space-y-4">
+                 <p className="text-[8px] md:text-[10px] font-black uppercase text-gold tracking-widest">Synthetic Intelligence</p>
+                 <p className="text-white/60 text-xs md:text-sm leading-relaxed italic">"Predictive clustering suggests 14% increase in Q3 consumer demand for tech commodities."</p>
               </div>
            </div>
         </motion.div>
@@ -560,15 +546,15 @@ const Pricing = ({ onOpenToast }: { onOpenToast: (msg: string) => void }) => {
   ];
 
   return (
-    <section id="pricing" className="py-40 bg-charcoal">
-       <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center max-w-3xl mx-auto mb-32 space-y-8">
-             <span className="text-gold text-[12px] font-black uppercase tracking-[0.4em]">Investment Roadmap</span>
-             <h2 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-[0.9]">Select Your <br /> <span className="text-outline-gold">Velocity.</span></h2>
-             <p className="text-xl text-white/30 font-medium">Elite intelligence shouldn't be complicated. Simple pricing for aggressive growth.</p>
+    <section id="pricing" className="py-24 md:py-40 bg-charcoal">
+       <div className="max-w-7xl mx-auto px-6 md:px-8 font-display">
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-32 space-y-6 md:space-y-8">
+             <span className="text-gold text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">Investment Roadmap</span>
+             <h2 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[1.1] md:leading-[0.9]">Select Your <br className="hidden md:block" /> <span className="text-outline-gold">Velocity.</span></h2>
+             <p className="text-lg md:text-xl text-white/30 font-medium">Elite intelligence shouldn't be complicated. Simple pricing for aggressive growth.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
              {plans.map((plan, i) => (
                <motion.div
                  key={plan.name}
@@ -576,24 +562,24 @@ const Pricing = ({ onOpenToast }: { onOpenToast: (msg: string) => void }) => {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ delay: i * 0.1 }}
-                 className={`p-14 rounded-[48px] border transition-all duration-700 flex flex-col justify-between group ${plan.isPro ? "bg-charcoal-muted border-gold shadow-[0_40px_100px_rgba(212,175,55,0.15)] scale-105 z-10" : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05]"}`}
+                 className={`p-8 md:p-14 rounded-[32px] md:rounded-[48px] border transition-all duration-700 flex flex-col justify-between group ${plan.isPro ? "bg-charcoal-muted border-gold shadow-[0_40px_100px_rgba(212,175,55,0.15)] md:scale-105 z-10" : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05]"}`}
                >
-                 <div className="space-y-12">
-                   <div className="space-y-4">
-                      <h3 className="text-2xl font-display font-black uppercase tracking-tight">{plan.name}</h3>
-                      <p className="text-sm text-white/30 h-10 leading-relaxed">{plan.desc}</p>
+                 <div className="space-y-8 md:space-y-12">
+                   <div className="space-y-3 md:space-y-4">
+                      <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight">{plan.name}</h3>
+                      <p className="text-xs md:text-sm text-white/30 md:h-10 leading-relaxed">{plan.desc}</p>
                    </div>
                    
                    <div className="space-y-1">
-                      <div className="text-6xl font-display font-black tracking-tighter">{plan.price}</div>
-                      {plan.price.startsWith('$') && <p className="text-[11px] font-bold text-white/20 uppercase tracking-widest pl-1">Billed annually</p>}
+                      <div className="text-5xl md:text-6xl font-black tracking-tighter">{plan.price}</div>
+                      {plan.price.startsWith('$') && <p className="text-[10px] md:text-[11px] font-bold text-white/20 uppercase tracking-widest pl-1">Billed annually</p>}
                    </div>
 
-                   <ul className="space-y-6">
+                   <ul className="space-y-4 md:space-y-6">
                       {plan.features.map(feat => (
-                        <li key={feat} className="flex items-center gap-4 text-sm font-medium text-white/50 group-hover:text-white/80 transition-colors">
-                           <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${plan.isPro ? "bg-gold text-charcoal" : "bg-white/10"}`}>
-                              <CheckCircle2 size={12} strokeWidth={4} />
+                        <li key={feat} className="flex items-center gap-3 md:gap-4 text-xs md:text-sm font-medium text-white/50 group-hover:text-white/80 transition-colors">
+                           <div className={`w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center shrink-0 ${plan.isPro ? "bg-gold text-charcoal" : "bg-white/10"}`}>
+                              <CheckCircle2 size={10} strokeWidth={4} className="md:size-12" />
                            </div>
                            {feat}
                         </li>
@@ -603,7 +589,7 @@ const Pricing = ({ onOpenToast }: { onOpenToast: (msg: string) => void }) => {
 
                  <button 
                    onClick={() => onOpenToast(`Initializing secure contract grid for ${plan.name} plan...`)}
-                   className={`w-full py-5.5 rounded-[24px] font-black uppercase tracking-[0.2em] text-sm mt-16 transition-all duration-500 cursor-pointer active:scale-95 ${plan.isPro ? "bg-gold text-charcoal gold-button-shadow hover:scale-105" : "bg-white/5 text-white hover:bg-white/15 border border-white/5"}`}
+                   className={`w-full py-4 md:py-5.5 rounded-[16px] md:rounded-[24px] font-black uppercase tracking-[0.2em] text-xs md:text-sm mt-10 md:mt-16 transition-all duration-500 cursor-pointer active:scale-95 ${plan.isPro ? "bg-gold text-charcoal gold-button-shadow hover:scale-105" : "bg-white/5 text-white hover:bg-white/15 border border-white/5"}`}
                  >
                    Get Started
                  </button>
@@ -617,17 +603,17 @@ const Pricing = ({ onOpenToast }: { onOpenToast: (msg: string) => void }) => {
 
 const Footer = () => {
   return (
-    <footer className="py-24 bg-charcoal border-t border-white/5">
-       <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="space-y-6 text-center md:text-left">
+    <footer className="py-20 md:py-24 bg-charcoal border-t border-white/5 font-display">
+       <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-10 md:gap-12">
+          <div className="space-y-4 md:space-y-6 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-4">
-              <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-gold border border-white/10 font-black text-2xl">A</div>
-              <span className="font-display font-black text-2xl tracking-tighter uppercase">AURA <span className="text-gold">AI</span></span>
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-2xl flex items-center justify-center text-gold border border-white/10 font-black text-xl md:text-2xl">A</div>
+              <span className="font-display font-black text-xl md:text-2xl tracking-tighter uppercase">AURA <span className="text-gold">AI</span></span>
             </div>
-            <p className="text-white/20 text-xs font-bold uppercase tracking-[0.25em]">© 2026 Aura Intelligence Systems Int.</p>
+            <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.25em]">© 2026 Aura Intelligence Systems Int.</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[11px] font-black uppercase tracking-[0.3em] text-white/30">
+          <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-12 gap-y-4 text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] text-white/30">
              {["Privacy", "Security", "Terms", "Documentation", "Twitter", "LinkedIn"].map(link => (
                <a key={link} href="#" className="hover:text-gold transition-colors">{link}</a>
              ))}
@@ -635,7 +621,7 @@ const Footer = () => {
 
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-16 h-16 rounded-full glass-card border-white/10 flex items-center justify-center text-gold hover:text-white transition-all group"
+            className="w-14 h-14 md:w-16 md:h-16 rounded-full glass-card border-white/10 flex items-center justify-center text-gold hover:text-white transition-all group shrink-0"
           >
              <ArrowRight className="-rotate-90 group-hover:-translate-y-1 transition-transform" />
           </button>
@@ -668,26 +654,26 @@ export default function App() {
         <Features />
         
         {/* Mid-page CTA */}
-        <section className="py-40 bg-charcoal">
+        <section className="py-20 md:py-40 bg-charcoal">
            <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="max-w-7xl mx-auto px-8"
+            className="max-w-7xl mx-auto px-6 md:px-8"
            >
-             <div className="glass-card p-24 text-center space-y-12 relative overflow-hidden bg-gradient-to-br from-white/[0.03] to-gold/[0.02]">
+             <div className="glass-card p-10 md:p-24 text-center space-y-8 md:space-y-12 relative overflow-hidden bg-gradient-to-br from-white/[0.03] to-gold/[0.02]">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-                <h2 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-tight">Ready to initiate <br /> <span className="text-gold">Autonomous growth?</span></h2>
-                <div className="flex flex-col sm:flex-row justify-center gap-6">
+                <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black tracking-tighter uppercase leading-tight">Ready to initiate <br className="hidden md:block" /> <span className="text-gold">Autonomous growth?</span></h2>
+                <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
                    <button 
                     onClick={() => setIsDemoModalOpen(true)}
-                    className="px-14 py-6 bg-gold text-charcoal font-black rounded-full gold-button-shadow hover:scale-105 active:scale-95 transition-all text-sm uppercase tracking-widest"
+                    className="w-full sm:w-auto px-10 md:px-14 py-4 md:py-6 bg-gold text-charcoal font-black rounded-full gold-button-shadow hover:scale-105 active:scale-95 transition-all text-xs md:text-sm uppercase tracking-widest"
                    >
                      Deploy Node v4.2
                    </button>
                    <button 
                     onClick={() => showToast("Downloading Intelligence whitepaper...")}
-                    className="px-14 py-6 bg-white/5 border border-white/10 text-white font-black rounded-full hover:bg-white/10 transition-all text-sm uppercase tracking-widest"
+                    className="w-full sm:w-auto px-10 md:px-14 py-4 md:py-6 bg-white/5 border border-white/10 text-white font-black rounded-full hover:bg-white/10 transition-all text-xs md:text-sm uppercase tracking-widest"
                    >
                      Read Whitepaper
                    </button>
